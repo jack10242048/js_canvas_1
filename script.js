@@ -13,17 +13,17 @@ canvas.addEventListener("mouseup", stopDraw);
 canvas.addEventListener("mouseleave", stopDraw);
 
 function startDraw(e) {
+  e.preventDefault(); 
   drawing = true;
   ctx.beginPath();
   ctx.moveTo(e.offsetX, e.offsetY);
 }
 
 function draw(e) {
-    e.preventDefault();   // 防止畫面滑動
-    if (!drawing) return;
+  if (!drawing) return;
 
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
 }
 
 function stopDraw() {
