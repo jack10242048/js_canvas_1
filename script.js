@@ -19,36 +19,13 @@ function startDraw(e) {
 }
 
 function draw(e) {
-  if (!drawing) return;
+    e.preventDefault();   // 防止畫面滑動
+    if (!drawing) return;
 
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
 }
 
 function stopDraw() {
   drawing = false;
 }
-
-
-
-// ipad
-canvas.addEventListener("pointerdown", (e) => {
-  drawing = true;
-  ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
-});
-
-canvas.addEventListener("pointermove", (e) => {
-  if (!drawing) return;
-
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
-});
-
-canvas.addEventListener("pointerup", () => {
-  drawing = false;
-});
-
-canvas.addEventListener("pointerleave", () => {
-  drawing = false;
-});
